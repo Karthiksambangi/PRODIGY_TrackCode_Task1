@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Navigation Menu</title>
+<style>
+  /* CSS for the navigation menu */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #3333339b;
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #00ff44; /* blue background color */
+    padding: 10px 0;
+    z-index: 1000; /* ensure it stays on top of other content */
+    transition: background-color 0.3s ease; /* smooth transition */
+  }
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .navbar li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .navbar a {
+    color: #fff; /* white font color */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  /* Style for hover effect */
+  .navbar a:hover {
+    background-color: #b30095; /* darker blue background color on hover */
+  }
+  
+  /* Additional styling for content */
+  .content {
+    padding-top: 70px; /* Adjust padding to avoid content being hidden behind the fixed navbar */
+    text-align: center;
+    padding: 50px 0;
+  }
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .card img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 10px;
+    max-width: 200px; /* Ensure image doesn't overflow */
+  }
+  .card h2 {
+    color: #007bff;
+    margin-top: 0;
+  }
+  .card p {
+    color: #555;
+  }
+
+  /* Styling for the color change button */
+  #colorChangeBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ccff00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  #colorChangeBtn:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar" id="navbar">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<div id="home" class="content">
+  <h1>Welcome to Our Website</h1>
+  <div class="card">
+    <img src="https://prodigyinfotech.dev/" alt="Transforming Learning">
+    <div class="card-content">
+      <h2>Transforming the Way People Learn</h2>
+      <p>Our mission is to create innovative and accessible learning solutions that empower people of all ages and backgrounds to achieve their full potential. Whether you're a student looking to improve your grades, a professional seeking to upskill, or an organization looking to enhance employee training, we have the tools and resources you need to succeed.</p>
+    </div>
+  </div>
+</div>
+
+<div id="about" class="content">
+  <h1>About Us</h1>
+  <div class="card">
+    <div class="card-content">
+      <h2>Our Mission</h2>
+      <p>Our mission is to create innovative and accessible learning solutions that empower people of all ages and backgrounds to achieve their full potential. Whether you're a student looking to improve your grades, a professional seeking to upskill, or an organization looking to enhance employee training, we have the tools and resources you need to succeed.</p>
+      <p>If you're looking for an innovative and dynamic learning experience that will help you achieve your goals and unlock your full potential, we invite you to join us on this exciting journey. Together, we can transform the way we learn and create a better future for all.</p>
+    </div>
+  </div>
+</div>
+
+<div id="services" class="content">
+  <h1>Our Services</h1>
+  <div class="card">
+    <img src="https://academy.pradeepit.com/wp-content/uploads/2019/01/Internship-in-Web-Development-1-1200x500.png" alt="Web Development">
+    <div class="card-content">
+      <h2>Web Dev Internship</h2>
+      <h3>Overview</h3>
+      <p>HTML5 & CSS3</p>
+      <p>JavaScript</p>
+      <p>Responsive Website</p>
+      <p>Web Applications</p>
+    </div>
+  </div>
+</div>
+
+<div id="contact" class="content">
+  <h1>Contact Us</h1>
+  <div class="card">
+    <div class="card-content">
+      <h2>Our Location</h2>
+      <p>Mumbai - 400018, Maharashtra, India</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-content">
+      <h2>How Can We Help?</h2>
+      <p>Contact us at <a href="mailto:contact@prodigyinfotech.dev">contact@prodigyinfotech.dev</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Button to change background color -->
+<button id="colorChangeBtn">Change Background Color</button>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+  // Initialize ScrollReveal
+  ScrollReveal().reveal('.content', {
+    duration: 1000, // Animation duration in milliseconds
+    origin: 'bottom', // Animation origin (top, right, bottom, left)
+    distance: '20px', // Animation distance
+    delay: 100, // Delay before animation starts in milliseconds
+    easing: 'ease-out', // Animation easing
+    reset: true // Reset animation on each reveal
+  });
+
+  // Function to get a random color
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  // Add event listener to the button
+  document.getElementById('colorChangeBtn').addEventListener('click', function() {
+    document.body.style.backgroundColor = getRandomColor();
+  });
+</script>
+</body>
+</html>
